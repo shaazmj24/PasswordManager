@@ -23,9 +23,17 @@ public class PasswordManager {
     public Password searchPassword(String account) {  
         return null; 
     }
+ 
+    // MODIFIES: this  
+    // EFFECT: Removes the password by the account name  
+    public void deletePassword(String account) {  
 
-    
+    }
 
+    // EFFECT: Returns a list of passwords 
+    public ArrayList<String> listPasswords() { 
+        return null; 
+    }
 
 
 
