@@ -21,6 +21,7 @@ This project is interesting because it solves a real-world problem, involves sec
 ### User Stories 
 - As a user, I want to be able to **add a password entry** to my **password manager**, so that I can store my login credentials for different applications.
 - As a user, I want to be able to **view a list of all stored password entries**
+- As a user, I want to be able to **view a list of all stored accounts**
 - As a user, I want to be able to **retrieve a stored password fo a specific account**. 
 - As a user, I want my passwords to be **encrypted**, so that they are stored securely and cannot be easily accessed by unauthorized users.
 - As a user, I want to able to **decrypt** my encrypted password. 
