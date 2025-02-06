@@ -12,7 +12,23 @@ public class PasswordManager {
     public PasswordManager() {  
     }
 
+    // MODIFIES: this
+    // EFFECT: Adds a new password and account 
+    public void addPasswordAccount(Password password, String account) { 
+
+    }
+
+    // EFFECT: Returns the password object by the account name
+    // if the account is not found, return "account not found" 
+    public Password searchPassword(String account) {  
+        return null; 
+    }
+
     
+
+
+
+
 
 
 }
