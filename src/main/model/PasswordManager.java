@@ -35,6 +35,11 @@ public class PasswordManager {
         return null; 
     }
 
+    // Effect: Returns a list of accounts 
+    public ArrayList<String> listAccounts() { 
+        return null;
+    }
+
 
 
 
