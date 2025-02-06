@@ -8,12 +8,27 @@ public class Password {
     private boolean isPassEncrypted; //whether password is encrypted (true) or not
 
     // EFFECT: Constructs a Password object with the given password
-    // and account name and set isPassEncrypted to false .
+    // and account name and set isPassEncrypted to false.
     public Password(String password, String account) { 
 
     }
 
+    // MODIFIES: this
+    // EFFECT: Encrypts this password and set isPassEncrypted to true
+    // if isPassEncrypted is already true, does nothing
+    public void encrypt() { 
+
+    }
+
+    // MODIFIES: this 
+    // EFFECT: Decrypt the encrypted password
+    public void decrypt() { 
+
+    }
+
     
+
+
 
 
     
