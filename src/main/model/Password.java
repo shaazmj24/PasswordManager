@@ -26,7 +26,18 @@ public class Password {
 
     }
 
-    
+    // EFFECT: Returns account name associated with password 
+    public String getAccount() { 
+        return account; 
+    }
+
+    // EFFECT: Returns the password 
+    public String getPassword() { 
+        return password; 
+    }
+
+
+
 
 
 
