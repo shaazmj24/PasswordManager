@@ -5,24 +5,41 @@ package model;
 public class Password { 
     private String password;  
     private String account;         
-    private boolean isPassEncrypted; //whether password is encrypted (true) or not
+    public boolean isPassEncrypted; //whether password is encrypted (true) or not
 
     // EFFECT: Constructs a Password object with the given password
     // and account name and set isPassEncrypted to false.
     public Password(String password, String account) { 
-
+        this.password = password; 
+        this.account = account; 
+        isPassEncrypted = false;
     }
 
     // MODIFIES: this
     // EFFECT: Encrypts this password and set isPassEncrypted to true
     // if isPassEncrypted is already true, does nothing
     public void encrypt() { 
-
+        String encryptedPass = "";
+        if (isPassEncrypted == false) {   
+            for(int i = 0; i < password.length(); i++){  
+                char c = (char) (password.charAt(i) + 3); 
+                encryptedPass += c;
+            }
+            this.password = encryptedPass; 
+            isPassEncrypted = true;
+        }
     }
 
     // MODIFIES: this 
     // EFFECT: Decrypt the encrypted password
     public void decrypt() { 
+        String decryptPass = "";
+        for(int i = 0; i < password.length(); i++){ 
+            char c = (char) (password.charAt(i) - 3); 
+            decryptPass += c;
+        }
+        this.password = decryptPass; 
+        isPassEncrypted = false;
 
     }
 
