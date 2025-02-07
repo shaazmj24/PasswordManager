@@ -5,7 +5,7 @@ package model;
 public class Password { 
     private String password;  
     private String account;         
-    public boolean isPassEncrypted; //whether password is encrypted (true) or not
+    private boolean isPassEncrypted; //whether password is encrypted (true) or not
 
     // EFFECT: Constructs a Password object with the given password
     // and account name and set isPassEncrypted to false.
@@ -21,7 +21,7 @@ public class Password {
     public void encrypt() { 
         String encryptedPass = "";
         if (isPassEncrypted == false) {   
-            for(int i = 0; i < password.length(); i++){  
+            for (int i = 0; i < password.length(); i++) {  
                 char c = (char) (password.charAt(i) + 3); 
                 encryptedPass += c;
             }
@@ -34,13 +34,12 @@ public class Password {
     // EFFECT: Decrypt the encrypted password
     public void decrypt() { 
         String decryptPass = "";
-        for(int i = 0; i < password.length(); i++){ 
+        for (int i = 0; i < password.length(); i++) { 
             char c = (char) (password.charAt(i) - 3); 
             decryptPass += c;
         }
         this.password = decryptPass; 
-        isPassEncrypted = false;
-
+        isPassEncrypted = false; 
     }
 
     // EFFECT: Returns account name associated with password 
@@ -51,6 +50,11 @@ public class Password {
     // EFFECT: Returns the password 
     public String getPassword() { 
         return password; 
+    }
+
+    // Effect: Returns Encryption boolean
+    public boolean getIsEncrypted() { 
+        return isPassEncrypted;
     }
 
 
