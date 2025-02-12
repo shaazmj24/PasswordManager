@@ -24,7 +24,7 @@ public class TestPasswordManager {
     void testConstructor() { 
         assertTrue(passwords.listPasswords().isEmpty());
         assertTrue(passwords.listAccounts().isEmpty());
-        assertTrue(passwords.listPasswords().size() == 0);
+        assertEquals(0, passwords.listPasswords().size());
         assertTrue(passwords.listAccounts().size() == 0);
     }
 
@@ -32,23 +32,33 @@ public class TestPasswordManager {
     void testAddPasswordAccount() { 
         passwords.addPasswordAccount(pass, pass.getAccount());
         assertEquals(pass, passwords.searchPassword("facebook"));
-        ArrayList<String> passS = new ArrayList<>(); 
-        ArrayList<String> accountS = new ArrayList();
-        passS.add("shaaz123");
+        ArrayList<Password> passS = new ArrayList<>(); 
+        ArrayList<String> accountS = new ArrayList<>();
+        passS.add(pass);
         accountS.add("facebook");
         assertEquals(passS, passwords.listPasswords());
         assertEquals(accountS, passwords.listAccounts());
 
     }
-
+    //
     @Test 
     void testAddPassAccMutiple() { 
         passwords.addPasswordAccount(pass, pass.getAccount());
         passwords.addPasswordAccount(pass1, pass1.getAccount()); 
         assertEquals(pass1, passwords.searchPassword("ubc"));
         assertEquals(pass, passwords.searchPassword("facebook"));
+        ArrayList<Password> passS = new ArrayList<>(); 
+        ArrayList<String> accountS = new ArrayList<>();
+        passS.add(pass); 
+        passS.add(pass1);
+        assertEquals(passS, passwords.listPasswords());
+        assertEquals(2, passwords.listPasswords().size());
         passwords.addPasswordAccount(pass2, pass2.getAccount());
         assertTrue(pass2 == passwords.searchPassword("instagram"));
+        passS.add(pass2); 
+        assertEquals(passS, passwords.listPasswords());
+        assertEquals(3, passwords.listPasswords().size());
+        assertTrue(passwords.listAccounts().size() == 3);
     }
 
     @Test 
@@ -66,25 +76,29 @@ public class TestPasswordManager {
         assertFalse(pass1 == passwords.searchPassword("instagram"));
         assertFalse(pass2 == passwords.searchPassword("ubc"));
     }
-
+    //
     @Test 
     void testDelete() {  
         passwords.addPasswordAccount(pass, pass.getAccount());
         assertEquals(pass, passwords.searchPassword("facebook"));
-        passwords.deletePassword("facebook");
+        assertTrue(passwords.listPasswords().size() == 1);
+        assertTrue(passwords.listAccounts().size() == 1);
+        assertEquals("Password deleted successfully", passwords.deletePassword("facebook"));
         assertTrue(passwords.listPasswords().size() == 0);
         assertTrue(passwords.listAccounts().size() == 0);
     }
-
+    //
     @Test 
     void testDeleteMutipleTimes() {  
         passwords.addPasswordAccount(pass, pass.getAccount());
         passwords.addPasswordAccount(pass1, pass1.getAccount()); 
         passwords.addPasswordAccount(pass2, pass2.getAccount());
-        passwords.deletePassword("ubc"); 
+        assertTrue(passwords.listAccounts().size() == 3);
+        assertEquals("Password deleted successfully", passwords.deletePassword("ubc"));
         assertTrue(passwords.listAccounts().size() == 2);
-        passwords.deletePassword("facebook");
+        assertEquals("Password deleted successfully", passwords.deletePassword("facebook"));
         assertTrue(passwords.listPasswords().size() == 1);
+        assertEquals("account not found", passwords.deletePassword("email"));
         passwords.deletePassword("instagram");
         assertTrue(passwords.listPasswords().size() == 0);
     }
