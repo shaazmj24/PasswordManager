@@ -5,14 +5,14 @@ package model;
 public class Password { 
     private String password;  
     private String account;         
-    private boolean isPassEncrypted; //whether password is encrypted (true) or not
+    private boolean getIsEncrypted; //whether password is encrypted (true) or not
 
     // EFFECT: Constructs a Password object with the given password
     // and account name and set isPassEncrypted to false.
     public Password(String password, String account) { 
         this.password = password; 
         this.account = account; 
-        isPassEncrypted = false;
+        getIsEncrypted = false;
     }
 
     // MODIFIES: this
@@ -20,13 +20,13 @@ public class Password {
     // if isPassEncrypted is already true, does nothing
     public void encrypt() { 
         String encryptedPass = "";
-        if (isPassEncrypted == false) {   
+        if (getIsEncrypted == false) {   
             for (int i = 0; i < password.length(); i++) {  
                 char c = (char) (password.charAt(i) + 3); 
                 encryptedPass += c;
             }
             this.password = encryptedPass; 
-            isPassEncrypted = true;
+            getIsEncrypted = true;
         }
     }
 
@@ -39,7 +39,7 @@ public class Password {
             decryptPass += c;
         }
         this.password = decryptPass; 
-        isPassEncrypted = false; 
+        getIsEncrypted = false; 
     }
 
     // EFFECT: Returns account name associated with password 
@@ -54,7 +54,7 @@ public class Password {
 
     // Effect: Returns Encryption boolean
     public boolean getIsEncrypted() { 
-        return isPassEncrypted;
+        return getIsEncrypted;
     }
 
 
