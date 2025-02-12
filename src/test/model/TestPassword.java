@@ -18,48 +18,51 @@ public class TestPassword {
     void testConstructor() { 
         assertEquals("shaaz123", pass.getPassword());
         assertEquals("facebook", pass.getAccount());
-        assertFalse(pass.isPassEncrypted);
-        assertEquals("1234", pass.getPassword());
-        assertEquals("ubc", pass.getAccount());
-        assertFalse(pass1.isPassEncrypted);
+        assertFalse(pass.getIsEncrypted());
+        assertEquals("1234", pass1.getPassword());
+        assertEquals("ubc", pass1.getAccount());
+        assertFalse(pass1.getIsEncrypted());
     }
 
     @Test 
     void testEncrypt() { 
-        assertFalse(pass.isPassEncrypted);
+        assertFalse(pass.getIsEncrypted());
         pass.encrypt();
-        assertEquals("vkddc123", pass.getPassword());
-        assertTrue(pass.isPassEncrypted);
-        assertFalse(pass1.isPassEncrypted);
+        assertEquals("vkdd}456", pass.getPassword());
+        assertTrue(pass.getIsEncrypted());
+        assertFalse(pass1.getIsEncrypted());
         pass1.encrypt();
-        assertEquals("1234", pass1.getPassword());
-        assertTrue(pass1.isPassEncrypted);
+        assertEquals("4567", pass1.getPassword());
+        assertTrue(pass1.getIsEncrypted());
     }
-
+    //
     @Test 
     void testDecrypt() { 
         pass.encrypt(); 
-        assertEquals("vkddc123", pass.getPassword());
+        assertEquals("vkdd}456", pass.getPassword());
+        assertTrue(pass.getIsEncrypted());
         pass.decrypt();
         assertEquals("shaaz123", pass.getPassword());
+        assertFalse(pass.getIsEncrypted());
         pass1.encrypt();
-        assertEquals("1234", pass1.getPassword());
+        assertEquals("4567", pass1.getPassword());
         pass1.decrypt();
         assertEquals("1234", pass1.getPassword());
+        assertFalse(pass1.getIsEncrypted());
     }
 
     @Test 
     void testEncryptMutipleTimes() {  
-        assertFalse(pass.isPassEncrypted);
+        assertFalse(pass.getIsEncrypted());
         pass.encrypt();
-        assertEquals("vkddc123", pass.getPassword());
-        assertTrue(pass.isPassEncrypted);
+        assertEquals("vkdd}456", pass.getPassword());
+        assertTrue(pass.getIsEncrypted());
         pass.encrypt(); 
-        assertTrue(pass.isPassEncrypted);
-        assertEquals("vkddc123", pass.getPassword());
+        assertTrue(pass.getIsEncrypted());
+        assertEquals("vkdd}456", pass.getPassword());
     }
 
 
-
+ 
     
 }
