@@ -18,20 +18,18 @@ public class PasswordApp {
     // Displays a menu of options and 
     // prompts the user to choose an action.
     private void run() {    
-        Scanner input = new Scanner(System.in);
-
-
-       System.out.println("1. Store Password");
-       System.out.println("2. Encrypt Password");
-       System.out.println("3. Search Password");
-       System.out.println("4. Delete Password");
-       System.out.println("5. View Passwords");
-       System.out.println("6. View Accounts");
-       System.out.println("choose options");
-
-
-       int optionChoosen = input.nextInt(); 
-       runOption(optionChoosen);
+        Scanner input = new Scanner(System.in);  
+        
+        System.out.println("1. Store Password"); 
+        System.out.println("2. Encrypt Password"); 
+        System.out.println("3. Search Password"); 
+        System.out.println("4. Delete Password"); 
+        System.out.println("5. View Passwords"); 
+        System.out.println("6. View Accounts"); 
+        System.out.println("choose options"); 
+        
+        int optionChoosen = input.nextInt();  
+        runOption(optionChoosen); 
     }
 
     // Executes the corresponding method based 
@@ -119,10 +117,39 @@ public class PasswordApp {
 
     // Searches for and displays a password for a given account, 
     // with an option to decrypt if encrypted
-    private void three() { 
-
+    private void three() {  
+        Scanner input = new Scanner(System.in); 
+        enterAccountCancel(); 
+        String uS = input.nextLine().trim(); 
+        if (uS.equals("cancel")) { 
+            run(); 
+        } else { 
+            Password pass = passwords.searchPassword(uS); 
+            if (pass == null) { 
+                System.out.println("account not found"); 
+                oK(); 
+            } else { 
+                if (!pass.getIsEncrypted()) { 
+                    System.out.println(pass.getPassword()); 
+                    oK(); 
+                } else { 
+                    Scanner input1 = new Scanner(System.in);  
+                    System.out.println("Do you want to decrypt your encrypted password? Yes or No"); 
+                    String userAnswer = input1.nextLine().trim().toLowerCase(); 
+                    if (userAnswer.equals("yes")) {  
+                        pass.decrypt(); 
+                        System.out.println(pass.getPassword()); 
+                        pass.encrypt(); 
+                        oK(); 
+                    } else { 
+                        System.out.println(pass.getPassword()); 
+                        oK(); 
+                    }  
+                } 
+            } 
+        } 
     }
-
+   
     // Delete the password for a specified account
     private void four() {  
         Scanner input = new Scanner(System.in);  
@@ -135,7 +162,7 @@ public class PasswordApp {
             oK(); 
         } 
     }
-
+ 
     // prints a list of all stored passwords 
     private void five() {  
         ArrayList<String> viewPass = new ArrayList<>(); 
@@ -162,9 +189,6 @@ public class PasswordApp {
             oK(); 
         } 
     }
-
-
-
 
 
 
