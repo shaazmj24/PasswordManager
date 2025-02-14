@@ -15,6 +15,14 @@ public class PasswordApp {
         run();
     } 
 
+    // Displays a menu of options and 
+    // prompts the user to choose an action.
+    private void run() {  
+        
+    }
+
+
+
 
 
 }
