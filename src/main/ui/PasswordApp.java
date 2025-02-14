@@ -95,9 +95,15 @@ public class PasswordApp {
                 oK(); 
             } 
         } 
+    }  
+
+    // Encrypts the password for a specified account
+    private void two() {  
+
     }
 
-    
+
+
 
 
 
