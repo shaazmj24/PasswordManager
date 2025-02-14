@@ -125,14 +125,30 @@ public class PasswordApp {
                 System.out.println("account not found"); 
                 ok(); 
             } else {  
-                displayDecrypt(); 
+                displayDecrypt(pass); 
             } 
         }  
     }
 
     // display decrypt option if pass is encrypted 
-    private void displayDecrypt(Password password) { 
-        
+    private void displayDecrypt(Password pass) {  
+        if (!pass.getIsEncrypted()) { 
+            System.out.println(pass.getPassword()); 
+            ok(); 
+        } else { 
+            Scanner input1 = new Scanner(System.in);  
+            System.out.println("Do you want to decrypt your encrypted password? Yes or No"); 
+            String userAnswer = input1.nextLine().trim().toLowerCase(); 
+            if (userAnswer.equals("yes")) {  
+                pass.decrypt(); 
+                System.out.println(pass.getPassword()); 
+                pass.encrypt(); 
+                ok(); 
+            } else { 
+                System.out.println(pass.getPassword()); 
+                ok(); 
+            }   
+        } 
     }
 
 
