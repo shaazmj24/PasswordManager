@@ -151,7 +151,12 @@ public class PasswordApp {
         }  
     }
 
-    
+    // prints a list of all stored accounts 
+    private void six() { 
+        
+    }
+
+
 
 
 
