@@ -56,8 +56,14 @@ public class PasswordApp {
         } 
     }
 
-    
+    // Prompts the user to type "ok" to 
+    // return to the main menu.
+    private void oK() { 
 
+    }
+
+
+ 
 
 
 
