@@ -34,6 +34,30 @@ public class PasswordApp {
        runOption(optionChoosen);
     }
 
+    // Executes the corresponding method based 
+    // on the user's chosen option.
+    private void runOption(int option) {   
+        if (option == 1) {
+            one();
+        }
+        else if (option == 2) {
+            two();
+        }
+        else if (option == 3) {
+            three();
+        }
+        else if (option == 4) {
+            four();
+        }
+        else if (option == 5) {
+            five();
+        } else {
+            six();
+        } 
+    }
+
+    
+
 
 
 
