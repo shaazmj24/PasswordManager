@@ -124,8 +124,16 @@ public class PasswordApp {
 
 
     // Delete the password for a specified account
-    private void four() { 
-
+    private void four() {  
+        Scanner input = new Scanner(System.in);  
+        enterAccountCancel(); 
+        String userAcc = input.nextLine().trim(); 
+        if (userAcc.equals("cancel")) { 
+            run(); 
+        } else { 
+            System.out.println(passwords.deletePassword(userAcc));  
+            oK(); 
+        } 
     }
 
 
