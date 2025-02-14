@@ -98,9 +98,26 @@ public class PasswordApp {
     }  
 
     // Encrypts the password for a specified account
-    private void two() {  
-
+    private void two() {    
+        Scanner input = new Scanner(System.in); 
+        enterAccountCancel(); 
+        String userS = input.nextLine().trim(); 
+        if (userS.equals("cancel")) { 
+            run(); 
+        } else { 
+            Password passToE = passwords.searchPassword(userS); 
+            if (passToE == null) {  
+                System.out.println("account not found");  
+                oK(); 
+            } else {  
+                passToE.encrypt(); 
+                System.out.println("Succusfully encrypted"); 
+                oK(); 
+            } 
+        } 
     }
+
+    
 
 
 
