@@ -40,7 +40,7 @@ public class TestPasswordManager {
         assertEquals(accountS, passwords.listAccounts());
 
     }
-    //
+    
     @Test 
     void testAddPassAccMutiple() { 
         passwords.addPasswordAccount(pass, pass.getAccount());
@@ -76,7 +76,7 @@ public class TestPasswordManager {
         assertFalse(pass1 == passwords.searchPassword("instagram"));
         assertFalse(pass2 == passwords.searchPassword("ubc"));
     }
-    //
+    
     @Test 
     void testDelete() {  
         passwords.addPasswordAccount(pass, pass.getAccount());
@@ -87,7 +87,7 @@ public class TestPasswordManager {
         assertTrue(passwords.listPasswords().size() == 0);
         assertTrue(passwords.listAccounts().size() == 0);
     }
-    //
+    
     @Test 
     void testDeleteMutipleTimes() {  
         passwords.addPasswordAccount(pass, pass.getAccount());
