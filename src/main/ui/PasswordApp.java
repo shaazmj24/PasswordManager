@@ -37,17 +37,13 @@ public class PasswordApp {
     private void runOption(int option) {   
         if (option == 1) {
             one();
-        }
-        else if (option == 2) {
+        } else if (option == 2) {
             two();
-        }
-        else if (option == 3) {
+        } else if (option == 3) {
             three();
-        }
-        else if (option == 4) {
+        } else if (option == 4) {
             four();
-        }
-        else if (option == 5) {
+        } else if (option == 5) {
             five();
         } else {
             six();
@@ -56,13 +52,13 @@ public class PasswordApp {
 
     // Prompts the user to type "ok" to 
     // return to the main menu.
-    private void oK() {  
-        Scanner input = new Scanner(System.in);  
-       System.out.println("Type ok to go back");
-       String uS = input.nextLine();
-       if (uS.equals("ok")) {
-           run();
-       }
+    private void ok() {  
+        Scanner input = new Scanner(System.in);   
+        System.out.println("Type ok to go back"); 
+        String us = input.nextLine(); 
+        if (us.equals("ok")) { 
+            run(); 
+        } 
     } 
 
     // Displays a prompt to enter an 
@@ -90,7 +86,7 @@ public class PasswordApp {
                 this.password = new Password(userPassword, userAccount); 
                 passwords.addPasswordAccount(password, userAccount); 
                 System.out.println("Successfully Stored"); 
-                oK(); 
+                ok(); 
             } 
         } 
     }  
@@ -106,11 +102,11 @@ public class PasswordApp {
             Password passToE = passwords.searchPassword(userS); 
             if (passToE == null) {  
                 System.out.println("account not found");  
-                oK(); 
+                ok(); 
             } else {  
                 passToE.encrypt(); 
                 System.out.println("Succusfully encrypted"); 
-                oK(); 
+                ok(); 
             } 
         } 
     }
@@ -120,35 +116,26 @@ public class PasswordApp {
     private void three() {  
         Scanner input = new Scanner(System.in); 
         enterAccountCancel(); 
-        String uS = input.nextLine().trim(); 
-        if (uS.equals("cancel")) { 
+        String us = input.nextLine().trim(); 
+        if (us.equals("cancel")) { 
             run(); 
         } else { 
-            Password pass = passwords.searchPassword(uS); 
+            Password pass = passwords.searchPassword(us); 
             if (pass == null) { 
                 System.out.println("account not found"); 
-                oK(); 
-            } else { 
-                if (!pass.getIsEncrypted()) { 
-                    System.out.println(pass.getPassword()); 
-                    oK(); 
-                } else { 
-                    Scanner input1 = new Scanner(System.in);  
-                    System.out.println("Do you want to decrypt your encrypted password? Yes or No"); 
-                    String userAnswer = input1.nextLine().trim().toLowerCase(); 
-                    if (userAnswer.equals("yes")) {  
-                        pass.decrypt(); 
-                        System.out.println(pass.getPassword()); 
-                        pass.encrypt(); 
-                        oK(); 
-                    } else { 
-                        System.out.println(pass.getPassword()); 
-                        oK(); 
-                    }  
-                } 
+                ok(); 
+            } else {  
+                displayDecrypt(); 
             } 
-        } 
+        }  
     }
+
+    // display decrypt option if pass is encrypted 
+    private void displayDecrypt(Password password) { 
+        
+    }
+
+
    
     // Delete the password for a specified account
     private void four() {  
@@ -159,7 +146,7 @@ public class PasswordApp {
             run(); 
         } else { 
             System.out.println(passwords.deletePassword(userAcc));  
-            oK(); 
+            ok(); 
         } 
     }
  
@@ -168,13 +155,13 @@ public class PasswordApp {
         ArrayList<String> viewPass = new ArrayList<>(); 
         if (passwords.listPasswords().isEmpty()) { 
             System.out.println("Empty");  
-            oK(); 
+            ok(); 
         } else { 
             for (Password pass : passwords.listPasswords()) {  
                 viewPass.add(pass.getPassword()); 
             }  
             System.out.println(viewPass);  
-            oK(); 
+            ok(); 
         }  
     }
 
@@ -183,13 +170,12 @@ public class PasswordApp {
         ArrayList<String> listA = passwords.listAccounts(); 
         if (listA.isEmpty()) {  
             System.out.println("Empty");  
-            oK(); 
+            ok(); 
         } else {  
             System.out.println(listA); 
-            oK(); 
+            ok(); 
         } 
     }
-
 
 
 }
