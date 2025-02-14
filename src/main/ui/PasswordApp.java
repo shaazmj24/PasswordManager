@@ -10,8 +10,9 @@ public class PasswordApp {
     private PasswordManager passwords;    
 
     // Initializes PasswordManager and Runs the application
-    public PasswordApp() {  
-        
+    public PasswordApp() {   
+        this.passwords = new PasswordManager();
+        run();
     } 
 
 
