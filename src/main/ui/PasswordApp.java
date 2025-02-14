@@ -58,9 +58,16 @@ public class PasswordApp {
 
     // Prompts the user to type "ok" to 
     // return to the main menu.
-    private void oK() { 
-
+    private void oK() {  
+        Scanner input = new Scanner(System.in);  
+       System.out.println("Type ok to go back");
+       String uS = input.nextLine();
+       if (uS.equals("ok")) {
+           run();
+       }
     }
+
+    
 
 
  
