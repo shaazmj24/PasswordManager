@@ -69,9 +69,12 @@ public class PasswordApp {
 
     // Displays a prompt to enter an 
     // account or cancel
-    private void enterAccountancel() { 
-        
+    private void enterAccountCancel() {   
+        System.out.println("Enter Account: "); 
+        System.out.println("    Cancel    ");
     }
+
+    
 
  
 
