@@ -152,9 +152,18 @@ public class PasswordApp {
     }
 
     // prints a list of all stored accounts 
-    private void six() { 
-        
+    private void six() {  
+        ArrayList<String> listA = passwords.listAccounts(); 
+        if (listA.isEmpty()) {  
+            System.out.println("Empty");  
+            oK(); 
+        } else {  
+            System.out.println(listA); 
+            oK(); 
+        } 
     }
+
+    
 
 
 
