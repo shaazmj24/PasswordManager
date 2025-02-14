@@ -48,7 +48,6 @@ public class TestPasswordManager {
         assertEquals(pass1, passwords.searchPassword("ubc"));
         assertEquals(pass, passwords.searchPassword("facebook"));
         ArrayList<Password> passS = new ArrayList<>(); 
-        ArrayList<String> accountS = new ArrayList<>();
         passS.add(pass); 
         passS.add(pass1);
         assertEquals(passS, passwords.listPasswords());
@@ -67,6 +66,7 @@ public class TestPasswordManager {
         assertEquals(pass1, passwords.searchPassword("ubc"));
         passwords.addPasswordAccount(pass2, pass2.getAccount());
         assertEquals(pass2, passwords.searchPassword("instagram"));
+        assertNull(passwords.searchPassword("email"));
     }
 
     @Test 
