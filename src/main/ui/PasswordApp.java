@@ -117,11 +117,11 @@ public class PasswordApp {
         } 
     }
 
-    
+    // Searches for and displays a password for a given account, 
+    // with an option to decrypt if encrypted
     private void three() { 
 
     }
-
 
     // Delete the password for a specified account
     private void four() {  
@@ -163,23 +163,7 @@ public class PasswordApp {
         } 
     }
 
-    
 
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
- 
 
 
 
