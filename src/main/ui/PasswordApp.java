@@ -75,9 +75,30 @@ public class PasswordApp {
     }
 
     // Stores a new password for a given account
-    private void one() { 
-        
+    private void one() {    
+        Scanner input = new Scanner(System.in); 
+        enterAccountCancel(); 
+        String userAccount = input.nextLine().trim(); 
+        if (userAccount.equals("cancel")) { 
+            run(); 
+        } else { 
+            Scanner input1 = new Scanner(System.in); 
+            System.out.println("Enter Password: "); 
+            System.out.println("   Cancel   "); 
+            String userPassword = input1.nextLine().trim(); 
+            if (userPassword.equals("cancel")) { 
+                run(); 
+            } else { 
+                this.password = new Password(userPassword, userAccount); 
+                passwords.addPasswordAccount(password, userAccount); 
+                System.out.println("Successfully Stored"); 
+                oK(); 
+            } 
+        } 
     }
+
+    
+
 
 
 
