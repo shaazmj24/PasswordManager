@@ -74,7 +74,12 @@ public class PasswordApp {
         System.out.println("    Cancel    ");
     }
 
-    
+    // Stores a new password for a given account
+    private void one() { 
+        
+    }
+
+
 
  
 
