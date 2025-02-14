@@ -137,9 +137,21 @@ public class PasswordApp {
     }
 
     // prints a list of all stored passwords 
-    private void five() { 
-
+    private void five() {  
+        ArrayList<String> viewPass = new ArrayList<>(); 
+        if (passwords.listPasswords().isEmpty()) { 
+            System.out.println("Empty");  
+            oK(); 
+        } else { 
+            for (Password pass : passwords.listPasswords()) {  
+                viewPass.add(pass.getPassword()); 
+            }  
+            System.out.println(viewPass);  
+            oK(); 
+        }  
     }
+
+    
 
 
 
