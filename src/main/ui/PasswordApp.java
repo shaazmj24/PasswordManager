@@ -65,9 +65,16 @@ public class PasswordApp {
        if (uS.equals("ok")) {
            run();
        }
+    } 
+
+    // Displays a prompt to enter an 
+    // account or cancel
+    private void enterAccountancel() { 
+        
     }
 
-    
+ 
+
 
 
  
