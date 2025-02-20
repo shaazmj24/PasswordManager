@@ -26,4 +26,6 @@ This project is interesting because it solves a real-world problem, involves sec
 - As a user, I want my passwords to be **encrypted**, so that they are stored securely and cannot be easily accessed by unauthorized users.
 - As a user, I want to able to **decrypt** my encrypted password. 
 - As a user, I want to able to **delete** a password entry by application name
+- As a user, I want to have the option to **save** my stored passwords to a file so that I can access it later.
+- As a user, I want to have the option to **load** my saved password data from a file
 
