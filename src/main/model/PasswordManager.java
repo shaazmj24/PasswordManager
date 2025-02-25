@@ -70,6 +70,14 @@ public class PasswordManager implements Saveable {
     //EFFECT: return this PasswordManager as a JSON object
     @Override 
     public JSONObject toJson() { 
+        JSONObject json = new JSONObject();  
+        JSONArray jArray = new JSONArray();
+
+        for (Password pass : passwords.values()) {  
+            jArray.put(pass.toJson()); 
+        }
+        json.put("Passwords", jArray);
+        return json;
     }
 
 }
