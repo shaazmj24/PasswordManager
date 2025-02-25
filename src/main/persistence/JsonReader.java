@@ -10,5 +10,7 @@ import java.util.Scanner;
 
 // A reader that can read passwords from a file 
 public class JsonReader {  
+    private static final String DELIMITER = ",";   
+    
 
 }
