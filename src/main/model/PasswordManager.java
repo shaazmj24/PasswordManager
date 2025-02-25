@@ -1,11 +1,17 @@
 package model;
 
 import java.util.HashMap;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Saveable;
+
 import java.util.ArrayList;
 
 // Manages a collection of passwords associated with 
 // different accounts 
-public class PasswordManager {  
+public class PasswordManager implements Saveable {  
     private HashMap<String, Password> passwords;
  
     // EFFECT: Constructs a PasswordManager and initializes an empty 
@@ -59,7 +65,11 @@ public class PasswordManager {
             listA.add(acc);
         }
         return listA;
-    }
+    }  
 
+    //EFFECT: return this PasswordManager as a JSON object
+    @Override 
+    public JSONObject toJson() { 
+    }
 
 }
