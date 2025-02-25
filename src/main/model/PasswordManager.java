@@ -71,12 +71,12 @@ public class PasswordManager implements Saveable {
     @Override 
     public JSONObject toJson() { 
         JSONObject json = new JSONObject();  
-        JSONArray jArray = new JSONArray();
+        JSONArray jarray = new JSONArray();
 
         for (Password pass : passwords.values()) {  
-            jArray.put(pass.toJson()); 
+            jarray.put(pass.toJson()); 
         }
-        json.put("Passwords", jArray);
+        json.put("Passwords", jarray);
         return json;
     }
 
