@@ -23,8 +23,13 @@ public class JsonWriter {
     public void write(PasswordManager passwords) {    
         JSONObject jPass = passwords.toJson(); 
         writer.print(jPass.toString(4));
-    }  
+    }   
 
-    
+    // MODIFIES: this 
+    // EFFECTS: closes writer 
+    public void close() {  
+        
+    }
+
 
 }
