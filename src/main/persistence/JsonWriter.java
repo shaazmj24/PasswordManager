@@ -20,10 +20,11 @@ public class JsonWriter {
     // MODIFIES: this 
     // EFFECTS: write the JSON representation of PasswordManager to 
     // the file 
-    public void write(PasswordManager passwords) {  
-        
-    }
-
+    public void write(PasswordManager passwords) {    
+        JSONObject jPass = passwords.toJson(); 
+        writer.print(jPass.toString(4));
+    }  
 
     
+
 }
