@@ -27,8 +27,8 @@ public class JsonWriter {
 
     // MODIFIES: this 
     // EFFECTS: closes writer 
-    public void close() {  
-        
+    public void close() {   
+        writer.close(); 
     }
 
 
