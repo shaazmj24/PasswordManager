@@ -10,12 +10,10 @@ import java.util.List;
 // passwormanager to file
 public class JsonWriter {
     private PrintWriter writer; 
-    private String destination; 
-    private static final int TAB = 4;
 
-    // EFFECT: constructs writer to write to destination file 
-    public JsonWriter(String destination) { 
-
+    // EFFECT: constructs a writer that will write data to file
+    public JsonWriter(File file) {  
+        
     }
 
 
