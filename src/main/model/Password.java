@@ -1,8 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+
+import persistence.Saveable;
+
 // Represents a password associated with an account, 
 // with functionality to encrypt and decrypt it.
-public class Password { 
+public class Password implements Saveable { 
     private String password;  
     private String account;         
     private boolean getIsEncrypted; //whether password is encrypted (true) or not
@@ -55,11 +59,13 @@ public class Password {
     // Effect: Returns Encryption boolean
     public boolean getIsEncrypted() { 
         return getIsEncrypted;
+    } 
+
+    // EFFECT: Returns this Password as a JSON object 
+    @Override  
+    public JSONObject toJson() {  
+         
     }
-
-
-
-
 
 
 
