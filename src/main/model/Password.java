@@ -63,8 +63,13 @@ public class Password implements Saveable {
 
     // EFFECT: Returns this Password as a JSON object 
     @Override  
-    public JSONObject toJson() {  
-         
+    public JSONObject toJson() {   
+        JSONObject json = new JSONObject();  
+        json.put("Account", account); 
+        json.put("Password", password);  
+        json.put("isEncrypted", getIsEncrypted); 
+
+        return json;
     }
 
 
