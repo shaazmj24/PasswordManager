@@ -7,6 +7,7 @@ import model.PasswordManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,9 +29,9 @@ public class JsonReader {
         return parsePasswordManager(fileObject); 
     }
 
-    // EFFECT: returns content of file as a list of strings, each string 
-    // containing the content of one row of the file 
-    private static List<String> readFile(File file) throws IOException {   
+    // EFFECT: read the file content as a single string  
+    private static String readFile(File file) throws IOException {    
+        
     } 
 
 
