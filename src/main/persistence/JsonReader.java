@@ -47,7 +47,7 @@ public class JsonReader {
             JSONObject passwordJson = (JSONObject) obj;
             String account = passwordJson.getString("Account");
             String password = passwordJson.getString("Password"); 
-            Boolean isEncrypted = passwordJson.getBoolean("IsEncrypted"); 
+            Boolean isEncrypted = passwordJson.getBoolean("isEncrypted"); 
 
             // create password object and then add it to password manager 
             Password pass = new Password(password, account);  
