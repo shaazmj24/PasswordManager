@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import model.PasswordManager;
+import model.Password;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,8 +36,27 @@ public class JsonReader {
     }  
 
     //EFFECT: parse a PasswordManager from a JSONOBject 
-    private static PasswordManager parsePasswordManager(JSONObject filePass) {  
-        
+    private static PasswordManager parsePasswordManager(JSONObject filePass) {   
+        // create PassowrdManager to store password 
+        PasswordManager passwords = new PasswordManager(); 
+        // get the "passwords" array from JSONOBJECT 
+        JSONArray passwordsArray = filePass.getJSONArray("Passwords"); 
+
+        // loop each JSONOBJECT in the array 
+        for (Object obj : passwordsArray) { 
+            JSONObject passwordJson = (JSONObject) obj;
+            String account = passwordJson.getString("Account");
+            String password = passwordJson.getString("Password"); 
+            Boolean IsEncrypted = passwordJson.getBoolean("IsEncrypted"); 
+
+            // create password object and then add it to password manager 
+            Password pass = new Password(password, account);  
+            if (IsEncrypted) { 
+                pass.encrypt();
+            }
+            passwords.addPasswordAccount(pass, account); 
+        } 
+        return passwords;
     }
 
 
