@@ -12,10 +12,10 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.IOException;
 
 // A reader that can read passwords from a file 
-public class JsonReader {  
-    private static final String DELIMITER = ",";    
+public class JsonReader {     
 
     // EFFECT: returns a PasswordManager from file; throws 
     // IOException if an exception is caught when opening or reading file 
@@ -47,11 +47,11 @@ public class JsonReader {
             JSONObject passwordJson = (JSONObject) obj;
             String account = passwordJson.getString("Account");
             String password = passwordJson.getString("Password"); 
-            Boolean IsEncrypted = passwordJson.getBoolean("IsEncrypted"); 
+            Boolean isEncrypted = passwordJson.getBoolean("IsEncrypted"); 
 
             // create password object and then add it to password manager 
             Password pass = new Password(password, account);  
-            if (IsEncrypted) { 
+            if (isEncrypted) { 
                 pass.encrypt();
             }
             passwords.addPasswordAccount(pass, account); 
