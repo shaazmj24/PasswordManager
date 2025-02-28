@@ -70,6 +70,12 @@ public class Password implements Saveable {
         json.put("isEncrypted", getIsEncrypted); 
 
         return json;
+    } 
+
+    // MODIFIES: this
+    // EFFECT: sets the isEncrypted to boolean 
+    public void setIsEncrypted(boolean bol) { 
+        
     }
 
 
