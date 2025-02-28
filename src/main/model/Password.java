@@ -74,8 +74,8 @@ public class Password implements Saveable {
 
     // MODIFIES: this
     // EFFECT: sets the isEncrypted to boolean 
-    public void setIsEncrypted(boolean bol) { 
-        
+    public void setIsEncrypted(boolean bol) {  
+        this.getIsEncrypted = bol; 
     }
 
 
