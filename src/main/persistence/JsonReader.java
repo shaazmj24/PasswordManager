@@ -50,10 +50,8 @@ public class JsonReader {
             Boolean isEncrypted = passwordJson.getBoolean("isEncrypted"); 
 
             // create password object and then add it to password manager 
-            Password pass = new Password(password, account);  
-            if (isEncrypted) { 
-                pass.encrypt();
-            }
+            Password pass = new Password(password, account); 
+            pass.setIsEncrypted(isEncrypted); 
             passwords.addPasswordAccount(pass, account); 
         } 
         return passwords;
