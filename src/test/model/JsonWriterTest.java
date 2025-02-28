@@ -11,6 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import persistence.*;
+
 public class JsonWriterTest { 
     private static final String TEST_FILE = "./data/testPasswords.txt";
     private JsonWriter testWriter; 
@@ -23,7 +25,7 @@ public class JsonWriterTest {
         passwords = new PasswordManager(); 
         pass1 = new Password("tiger123", "facebook"); 
     } 
-
+ 
     @Test 
     void testWriterPasswords() throws IOException, IndexOutOfBoundsException { 
         passwords.addPasswordAccount(pass1, pass1.getAccount());
@@ -33,7 +35,7 @@ public class JsonWriterTest {
         testWriter.close();
 
         // read them back in and verify the data is correct 
-        PasswordManager passwords1 = Reader.readPasswords(new File(TEST_FILE)); 
+        PasswordManager passwords1 = JsonReader.readPasswords(new File(TEST_FILE)); 
         Password test = passwords1.searchPassword("facebook"); 
         assertEquals("tiger123", test);
         assertEquals(1, passwords1.listPasswords().size());
