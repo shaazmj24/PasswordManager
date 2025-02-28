@@ -32,8 +32,12 @@ public class JsonReader {
     // EFFECT: read the file content as a single string  
     private static String readFile(File file) throws IOException {      
         return new String(Files.readAllBytes(file.toPath()));
-    } 
+    }  
 
+    //EFFECT: parse a PasswordManager from a JSONOBject 
+    private static PasswordManager parsePasswordManager(JSONObject filePass) {  
+        
+    }
 
 
 }
