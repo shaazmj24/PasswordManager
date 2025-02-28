@@ -14,7 +14,7 @@ import java.util.List;
 import persistence.*;
 
 public class JsonWriterTest { 
-    private static final String TEST_FILE = "./data/testPasswords.txt";
+    private static final String TEST_FILE = "./data/passwords.json";
     private JsonWriter testWriter; 
     private PasswordManager passwords; 
     private Password pass1;  
@@ -37,7 +37,7 @@ public class JsonWriterTest {
         // read them back in and verify the data is correct 
         PasswordManager passwords1 = JsonReader.readPasswords(new File(TEST_FILE)); 
         Password test = passwords1.searchPassword("facebook"); 
-        assertEquals("tiger123", test);
+        assertEquals("tiger123", test.getPassword());
         assertEquals(1, passwords1.listPasswords().size());
     }
 
