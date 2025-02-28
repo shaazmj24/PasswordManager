@@ -17,8 +17,15 @@ public class JsonReader {
 
     // EFFECT: returns a PasswordManager from file; throws 
     // IOException if an exception is caught when opening or reading file 
-    public static PasswordManager readPasswords(File file) throws IOException {  
+    public static PasswordManager readPasswords(File file) throws IOException {   
+        // Read the content as a single string 
+        String fileContent = readFile(file); 
+         
+        // Organise fileContent by converting it to JsonObject
+        JSONObject fileObject = new JSONObject(fileContent); 
 
+        // Convert JSONObject into a passwordmanager object 
+        return parsePasswordManager(fileObject); 
     }
 
     // EFFECT: returns content of file as a list of strings, each string 
