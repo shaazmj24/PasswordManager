@@ -15,13 +15,13 @@ public class PasswordApp {
     private static final String JSON_STORE = "./data/passwordstore.json"; 
     private JsonWriter jw; 
 
-    // Initializes PasswordManager and Runs the application
+    // EFFECT: Initializes PasswordManager and Runs the application
     public PasswordApp() {   
         this.passwords = new PasswordManager();
         run();
     } 
 
-    // Displays a menu of options and 
+    // EFFECT: Displays a menu of options and 
     // prompts the user to choose an action.
     private void run() {    
         Scanner input = new Scanner(System.in);  
@@ -41,7 +41,7 @@ public class PasswordApp {
         runOption(optionChoosen); 
     }
 
-    // Executes the corresponding method based 
+    // EFFECT: Executes the corresponding method based 
     // on the user's chosen option.
     private void runOption(int option) {   
         if (option == 1) {
@@ -65,7 +65,7 @@ public class PasswordApp {
         }
     }
 
-    // Prompts the user to type "ok" to 
+    // EFFECT: Prompts the user to type "ok" to 
     // return to the main menu.
     private void ok() {  
         Scanner input = new Scanner(System.in);   
@@ -76,14 +76,15 @@ public class PasswordApp {
         } 
     } 
 
-    // Displays a prompt to enter an 
+    // EFFECT: Displays a prompt to enter an 
     // account or cancel
     private void enterAccountCancel() {   
         System.out.println("Enter Account: "); 
         System.out.println("    Cancel    ");
     }
 
-    // Stores a new password for a given account
+    // MODIFIES: this
+    // EFFECT: Stores a new password for a given account
     private void one() {    
         Scanner input = new Scanner(System.in); 
         enterAccountCancel(); 
@@ -106,7 +107,8 @@ public class PasswordApp {
         } 
     }  
 
-    // Encrypts the password for a specified account
+    // MODIFIES: this
+    // EFFECT: Encrypts the password for a specified account
     private void two() {    
         Scanner input = new Scanner(System.in); 
         enterAccountCancel(); 
@@ -126,7 +128,7 @@ public class PasswordApp {
         } 
     }
 
-    // Searches for and displays a password for a given account, 
+    // EFFECT: Searches for and displays a password for a given account, 
     // with an option to decrypt if encrypted
     private void three() {  
         Scanner input = new Scanner(System.in); 
@@ -145,7 +147,7 @@ public class PasswordApp {
         }  
     }
 
-    // display decrypt option if pass is encrypted 
+    // EFFECT: display decrypt option if pass is encrypted 
     private void displayDecrypt(Password pass) {  
         if (!pass.getIsEncrypted()) { 
             System.out.println(pass.getPassword()); 
@@ -167,8 +169,8 @@ public class PasswordApp {
     }
 
 
-   
-    // Delete the password for a specified account
+    // MODIFIES: this
+    // EFFECT: Delete the password for a specified account
     private void four() {  
         Scanner input = new Scanner(System.in);  
         enterAccountCancel(); 
@@ -181,7 +183,7 @@ public class PasswordApp {
         } 
     }
  
-    // prints a list of all stored passwords 
+    // EFFECT: prints a list of all stored passwords 
     private void five() {  
         ArrayList<String> viewPass = new ArrayList<>(); 
         if (passwords.listPasswords().isEmpty()) { 
@@ -196,7 +198,7 @@ public class PasswordApp {
         }  
     }
 
-    // prints a list of all stored accounts 
+    // EFFECT: prints a list of all stored accounts 
     private void six() {  
         ArrayList<String> listA = passwords.listAccounts(); 
         if (listA.isEmpty()) {  
@@ -208,6 +210,7 @@ public class PasswordApp {
         } 
     } 
 
+    // MODIFIES: this
     // EFFECT: saves the data to file 
     private void seven() {     
         try {   
@@ -231,7 +234,6 @@ public class PasswordApp {
         }
         ok(); 
     }  
-
 
 
 }
