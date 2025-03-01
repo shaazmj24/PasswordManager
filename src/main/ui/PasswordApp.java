@@ -5,6 +5,7 @@ import model.PasswordManager;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import persistence.*;
 
@@ -221,9 +222,15 @@ public class PasswordApp {
     } 
 
     // EFFECT: loads data from file
-    private void eight() { 
-        
-    }
+    private void eight() {  
+        try { 
+            passwords = JsonReader.readPasswords(new File(JSON_STORE));  
+            System.out.println("Loaded data from" + JSON_STORE);
+        } catch (IOException e) { 
+            System.out.println("Unable to read from file:" + JSON_STORE);
+        }
+        ok(); 
+    }  
 
 
 
