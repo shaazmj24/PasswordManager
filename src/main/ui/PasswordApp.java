@@ -3,12 +3,17 @@ package ui;
 import model.Password;
 import model.PasswordManager;
 import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import persistence.*;
 
 public class PasswordApp { 
     private Password password;
     private PasswordManager passwords;
     private static final String JSON_STORE = "./data/passwordstore.json"; 
+    private JsonWriter jw;
+    private JsonReader jr; 
 
     // Initializes PasswordManager and Runs the application
     public PasswordApp() {   
@@ -204,8 +209,15 @@ public class PasswordApp {
     } 
 
     // EFFECT: saves the data to file 
-    private void seven() {    
-        
+    private void seven() {     
+        try {   
+            jw = new JsonWriter(new File(JSON_STORE)); 
+            jw.write(passwords);
+            jw.close(); 
+            System.out.println("Saved Passwords to" + JSON_STORE);
+        } catch (FileNotFoundException e) { 
+            System.out.println("not found");
+        }
     }
 
 
