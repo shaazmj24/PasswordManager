@@ -218,10 +218,12 @@ public class PasswordApp {
         } catch (FileNotFoundException e) { 
             System.out.println("not found");
         }
+    } 
+
+    // EFFECT: loads data from file
+    private void eight() { 
+        
     }
-
-
-
 
 
 
