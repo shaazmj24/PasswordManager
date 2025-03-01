@@ -13,8 +13,7 @@ public class PasswordApp {
     private Password password;
     private PasswordManager passwords;
     private static final String JSON_STORE = "./data/passwordstore.json"; 
-    private JsonWriter jw;
-    private JsonReader jr; 
+    private JsonWriter jw; 
 
     // Initializes PasswordManager and Runs the application
     public PasswordApp() {   
