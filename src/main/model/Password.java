@@ -11,6 +11,7 @@ public class Password implements Saveable {
     private String account;         
     private boolean getIsEncrypted; //whether password is encrypted (true) or not
 
+    // REQUIRES: account and password string must be > 0
     // EFFECT: Constructs a Password object with the given password
     // and account name and set isPassEncrypted to false.
     public Password(String password, String account) { 
