@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class PasswordApp { 
     private Password password;
-    private PasswordManager passwords;    
+    private PasswordManager passwords;
+    private static final String JSON_STORE = "./data/passwordstore.json"; 
 
     // Initializes PasswordManager and Runs the application
     public PasswordApp() {   
@@ -26,6 +27,9 @@ public class PasswordApp {
         System.out.println("4. Delete Password"); 
         System.out.println("5. View Passwords"); 
         System.out.println("6. View Accounts"); 
+        System.out.println("7. Save stored data to file"); 
+        System.out.println("8. load data from file");
+        System.out.println("9. quit");
         System.out.println("choose options"); 
         
         int optionChoosen = input.nextInt();  
@@ -45,9 +49,15 @@ public class PasswordApp {
             four();
         } else if (option == 5) {
             five();
-        } else {
+        } else if (option == 6) { 
             six();
-        } 
+        } else if (option == 7) { 
+            seven(); 
+        } else if (option == 8) { 
+            eight(); 
+        } else { 
+            nine(); 
+        }
     }
 
     // Prompts the user to type "ok" to 
@@ -191,7 +201,16 @@ public class PasswordApp {
             System.out.println(listA); 
             ok(); 
         } 
+    } 
+
+    // EFFECT: saves the data to file 
+    private void seven() {    
+        
     }
+
+
+
+
 
 
 }
