@@ -61,8 +61,8 @@ public class PasswordApp {
             seven(); 
         } else if (option == 8) { 
             eight(); 
-        } else { 
-            nine(); 
+        } else {  
+            System.exit(0);
         }
     }
 
