@@ -43,26 +43,33 @@ public class PasswordApp {
 
     // EFFECT: Executes the corresponding method based 
     // on the user's chosen option.
-    private void runOption(int option) {   
-        if (option == 1) {
-            one();
-        } else if (option == 2) {
-            two();
-        } else if (option == 3) {
-            three();
-        } else if (option == 4) {
-            four();
-        } else if (option == 5) {
-            five();
-        } else if (option == 6) { 
-            six();
-        } else if (option == 7) { 
-            seven(); 
-        } else if (option == 8) { 
-            eight(); 
-        } else {  
-            System.exit(0);
-        }
+    private void runOption(int option) {  
+        try {  
+            if (option == 1) {
+                one();
+            } else if (option == 2) {
+                two();
+            } else if (option == 3) {
+                three();
+            } else if (option == 4) {
+                four();
+            } else if (option == 5) {
+                five();
+            } else if (option == 6) { 
+                six();
+            } else if (option == 7) { 
+                seven(); 
+            } else if (option == 8) { 
+                eight(); 
+            } else if (option == 9) { 
+                System.exit(0); 
+            } else { 
+                throw new Exception();
+            } 
+        } catch (Exception e) {  
+            System.out.println("Enter appropriate number"); 
+        } 
+        ok();
     }
 
     // EFFECT: Prompts the user to type "ok" to 
