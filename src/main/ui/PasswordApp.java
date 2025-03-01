@@ -219,6 +219,7 @@ public class PasswordApp {
         } catch (FileNotFoundException e) { 
             System.out.println("not found");
         }
+        ok(); 
     } 
 
     // EFFECT: loads data from file
