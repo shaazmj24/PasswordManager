@@ -2,13 +2,7 @@ package ui.passwordgui;
       
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.Border;
- 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 public class Launcher { 
     public static void main(String[] args) {  
@@ -26,23 +20,23 @@ public class Launcher {
         // add panel to frame 
         frame.add(panel);
     }
-
+ 
     // EFFECT: add buttons to panel
     public static void addButtons(JPanel panel, int space) { 
-        Storepass = new Storepass(); 
-        Encryptpass = new Encryptpass();
-        Searchpass = new Searchpass();
-        Deletepass = new Deletepass();
+        Storepass button1 = new Storepass(); 
+        Encryptpass button2 = new Encryptpass();
+        Searchpass button3 = new Searchpass();
+        Deletepass button4 = new Deletepass();
         // add button options and vertical glue at top and bottom to center
         panel.add(Box.createVerticalGlue()); 
         panel.add(Box.createVerticalStrut(space)); 
-        panel.add(createButton(Storepass.getButton())); 
+        panel.add(createButton(button1.getButton())); 
         panel.add(Box.createVerticalStrut(space)); 
-        panel.add(createButton(Encryptpass.getButton()));  
+        panel.add(createButton(button2.getButton()));  
         panel.add(Box.createVerticalStrut(space)); 
-        panel.add(createButton(Searchpass.getButton())); 
+        panel.add(createButton(button3.getButton())); 
         panel.add(Box.createVerticalStrut(space)); 
-        panel.add(createButton(Deletepass.getButton())); 
+        panel.add(createButton(button4.getButton())); 
         panel.add(Box.createVerticalStrut(space)); 
         panel.add(Box.createVerticalGlue()); 
     }
@@ -55,5 +49,6 @@ public class Launcher {
         return button; 
     } 
 
-
+ 
 }
+ 
