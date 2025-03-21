@@ -1,34 +1,111 @@
 package ui.passwordgui;
+
+import model.Password;
+import model.PasswordManager;
+
 import javax.swing.*;
 
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import ui.passwordgui.Storepass; 
 
-public class Storepass extends JFrame implements ActionListener {  
+public class Storepass extends JPanel implements ActionListener {  
     private JButton button1; 
+    private JPanel mainPanel; 
+    private JButton submit; 
+    private String password; 
+    private String account; 
+    private Password p; 
+    private PasswordManager pm; 
 
     // EFFECT: construct button1
-    public Storepass() {    
+    public Storepass(JPanel mainPanel) {    
         button1 = new JButton("Store Password");  
         button1.addActionListener(this); 
+        this.mainPanel = mainPanel; 
+        submit = new JButton("Submit");
+        submit.addActionListener(this); 
+
     }   
 
     @Override 
     public void actionPerformed(ActionEvent e) {  
         if (e.getSource() == button1) {  
-            openNewFrame(); // call method to create new frame 
+            openNewPage(); // call method to create new frame 
+        } 
+        if (e.getSource() == submit) {   
+            storePassword(password, account);
+            returnMain();
         }
     }
 
-    public void openNewFrame() { 
-        JFrame newFrame = new JFrame("Store Password");  
-        newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        newFrame.setLayout(new FlowLayout()); 
-        newFrame.setVisible(true);
+    public void openNewPage() { 
+        JPanel newPage = new JPanel();  
+        newPage.setLayout(new GridBagLayout()); 
+        newPage.setVisible(true);
+        content(newPage); 
+        mainPanel.add(newPage, "StorePassword"); 
+
+        CardLayout cardLayout = (CardLayout) mainPanel.getLayout();  
+        cardLayout.show(mainPanel, "StorePassword");
+    }
+
+    public void content(JPanel newPage) {  
+        GridBagConstraints gbc = new GridBagConstraints(); 
+        // Label1: Enter Password
+        JLabel label1 = new JLabel("Enter Password:");  
+        label1.setFont(new Font("Arial", Font.BOLD, 23)); 
+        gbc.gridx = 0; 
+        gbc.gridy = 1; 
+        gbc.anchor = GridBagConstraints.LAST_LINE_END; 
+        gbc.insets = new Insets(10, 10, 10, 10); 
+        newPage.add(label1, gbc); 
+
+        // Password field  
+        JTextField enterPassword = new JTextField(); 
+        enterPassword.setPreferredSize(new Dimension(250, 40));
+        gbc.gridx = 1; 
+        gbc.gridy = 0; 
+        gbc.anchor = GridBagConstraints.LAST_LINE_START; 
+        newPage.add(enterPassword, gbc); 
+        password = enterPassword.getText(); 
+
+        // Label2: Enter Account  
+        JLabel label2 = new JLabel("Enter Account:"); 
+        label2.setFont(new Font("Arial", Font.BOLD, 23));
+        gbc.gridx = 0; 
+        gbc.gridy = 0; 
+        gbc.anchor = GridBagConstraints.LINE_END; 
+        newPage.add(label2, gbc); 
+
+        // Account field  
+        JTextField enterAccount = new JTextField(); 
+        enterAccount.setPreferredSize(new Dimension(250, 40));
+        gbc.gridx = 1; 
+        gbc.gridy = 1; 
+        gbc.anchor = GridBagConstraints.LAST_LINE_START; 
+        newPage.add(enterAccount, gbc); 
+        account = enterAccount.getText(); 
+
+        // sumbit button  
+        gbc.gridx = 1; 
+        gbc.gridy = 2; 
+        gbc.anchor = GridBagConstraints.CENTER; 
+        newPage.add(submit, gbc); 
+    }
+
+    public void storePassword(String pass, String acc) {  
+        p = new Password(pass, acc); 
+        pm = new PasswordManager(); 
+        pm.addPasswordAccount(p, acc); 
+    } 
+
+    public void returnMain() {  
+        CardLayout c = (CardLayout) mainPanel.getLayout(); 
+        c.show(mainPanel, "MainMenu"); 
     }
 
     public JButton getButton() { 
@@ -38,3 +115,11 @@ public class Storepass extends JFrame implements ActionListener {
 
 
 }
+
+
+
+
+
+
+
+
