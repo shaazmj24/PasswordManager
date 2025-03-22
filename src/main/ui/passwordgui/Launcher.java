@@ -2,10 +2,17 @@ package ui.passwordgui;
       
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import model.Password;
+import model.PasswordManager;
+
 import java.awt.*;
 
 public class Launcher { 
-    private static JPanel mainPanel; 
+    private static JPanel mainPanel;  
+    private static PasswordManager pm = new PasswordManager(); 
+
+
     public static void main(String[] args) {  
         // creates Frame 
         JFrame frame = new JFrame();  
@@ -32,16 +39,13 @@ public class Launcher {
  
     // EFFECT: add buttons to panel
     public static void addButtons(JPanel mainPanel, JPanel panel, int space) { 
-        Storepass button1 = new Storepass(mainPanel); 
-        Encryptpass button2 = new Encryptpass();
-        Searchpass button3 = new Searchpass();
-        Deletepass button4 = new Deletepass();
+        Storepass button1 = new Storepass(mainPanel, pm); 
+        Searchpass button3 = new Searchpass(mainPanel, pm);
+        Deletepass button4 = new Deletepass(mainPanel, pm);
         // add button options and vertical glue at top and bottom to center
         panel.add(Box.createVerticalGlue()); 
         panel.add(Box.createVerticalStrut(space)); 
         panel.add(createButton(button1.getButton())); 
-        panel.add(Box.createVerticalStrut(space)); 
-        panel.add(createButton(button2.getButton()));  
         panel.add(Box.createVerticalStrut(space)); 
         panel.add(createButton(button3.getButton())); 
         panel.add(Box.createVerticalStrut(space)); 
