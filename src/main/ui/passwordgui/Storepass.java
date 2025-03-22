@@ -16,19 +16,18 @@ public class Storepass extends JPanel implements ActionListener {
     private JButton button1; 
     private JPanel mainPanel; 
     private JButton submit; 
-    private String password; 
-    private String account; 
-    private Password p; 
+    private JTextField enterPassword; 
+    private JTextField enterAccount; 
     private PasswordManager pm; 
 
     // EFFECT: construct button1
-    public Storepass(JPanel mainPanel) {    
+    public Storepass(JPanel mainPanel, PasswordManager pm) {    
         button1 = new JButton("Store Password");  
         button1.addActionListener(this); 
         this.mainPanel = mainPanel; 
         submit = new JButton("Submit");
-        submit.addActionListener(this); 
-
+        submit.addActionListener(this);  
+        this.pm = pm; 
     }   
 
     @Override 
@@ -37,6 +36,8 @@ public class Storepass extends JPanel implements ActionListener {
             openNewPage(); // call method to create new frame 
         } 
         if (e.getSource() == submit) {   
+            String account = enterAccount.getText().trim(); 
+            String password = enterPassword.getText().trim(); 
             storePassword(password, account);
             returnMain();
         }
@@ -65,13 +66,12 @@ public class Storepass extends JPanel implements ActionListener {
         newPage.add(label1, gbc); 
 
         // Password field  
-        JTextField enterPassword = new JTextField(); 
+        enterPassword = new JTextField(); 
         enterPassword.setPreferredSize(new Dimension(250, 40));
-        gbc.gridx = 1; 
-        gbc.gridy = 0; 
+        gbc.gridx = 1;      //1
+        gbc.gridy = 1;      //1
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
-        newPage.add(enterPassword, gbc); 
-        password = enterPassword.getText(); 
+        newPage.add(enterPassword, gbc);  
 
         // Label2: Enter Account  
         JLabel label2 = new JLabel("Enter Account:"); 
@@ -82,13 +82,12 @@ public class Storepass extends JPanel implements ActionListener {
         newPage.add(label2, gbc); 
 
         // Account field  
-        JTextField enterAccount = new JTextField(); 
+        enterAccount = new JTextField(); 
         enterAccount.setPreferredSize(new Dimension(250, 40));
-        gbc.gridx = 1; 
-        gbc.gridy = 1; 
+        gbc.gridx = 1;     //1 
+        gbc.gridy = 0;     //0
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
         newPage.add(enterAccount, gbc); 
-        account = enterAccount.getText(); 
 
         // sumbit button  
         gbc.gridx = 1; 
@@ -98,8 +97,7 @@ public class Storepass extends JPanel implements ActionListener {
     }
 
     public void storePassword(String pass, String acc) {  
-        p = new Password(pass, acc); 
-        pm = new PasswordManager(); 
+        Password p = new Password(pass, acc);  
         pm.addPasswordAccount(p, acc); 
     } 
 
