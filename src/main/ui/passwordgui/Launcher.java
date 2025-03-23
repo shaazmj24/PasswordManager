@@ -45,7 +45,7 @@ public class Launcher {
         frame.add(mainPanel);
         // pop up load option
         int loadChoice = JOptionPane.showConfirmDialog(null, "Would you like to load saved passwords?", 
-        "Load Passwords", JOptionPane.YES_NO_OPTION); 
+                   "Load Passwords", JOptionPane.YES_NO_OPTION); 
 
         if (loadChoice == JOptionPane.YES_OPTION) { 
             load(); 
@@ -58,27 +58,20 @@ public class Launcher {
         frame.addWindowListener(new WindowAdapter() { 
             @Override 
             public void windowClosing(WindowEvent e) { 
-                int saveChoice = JOptionPane.showConfirmDialog(null,  
-                "Would you like to save your passwords before exiting?", "Save Passwords", 
-                JOptionPane.YES_NO_OPTION); 
+                int saveChoice = JOptionPane.showConfirmDialog(null,   
+                         "Would you like to save your passwords before exiting?", "Save Passwords", 
+                         JOptionPane.YES_NO_OPTION); 
 
-            if (saveChoice == JOptionPane.YES_OPTION) { 
-                save(); 
-            }
-            System.exit(0); 
-            }
-        });
+                        if (saveChoice == JOptionPane.YES_OPTION) {  
+                            save();  
+                        } 
+                        System.exit(0);  
+                    } 
+                }); 
     }
  
     // EFFECT: add buttons to panel
     public static void addButtons(JPanel mainPanel, JPanel panel, int space) {    
-        // create emoji label 
-        JLabel emoji = new JLabel("\uD83D\uDE0A"); // Unicode for 😊 
-        emoji.setFont(new Font("Apple Color Emoji", Font.PLAIN, 26)); 
-        emoji.setAlignmentX(Component.CENTER_ALIGNMENT);
-        panel.add(Box.createVerticalStrut(20)); 
-        panel.add(emoji); 
-        panel.add(Box.createVerticalStrut(30)); 
 
         Storepass button1 = new Storepass(mainPanel, pm); 
         Searchpass button3 = new Searchpass(mainPanel, pm);
