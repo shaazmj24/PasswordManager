@@ -114,7 +114,7 @@ public class Launcher {
     private static void load() {  
         try { 
             PasswordManager load = JsonReader.readPasswords(new File(JSON_STORE));  
-            pm.setMap(load.passwords);
+            pm.setMap(load.getHashMap());
         } catch (IOException e) { 
             System.out.println("Unable to read from file:" + JSON_STORE);
         }
