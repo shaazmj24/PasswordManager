@@ -18,6 +18,7 @@ public class Storepass extends JPanel implements ActionListener {
     private JTextField enterPassword; 
     private JTextField enterAccount; 
     private PasswordManager pm; 
+    private JLabel strength; 
 
     // EFFECT: construct button1
     public Storepass(JPanel mainPanel, PasswordManager pm) {    
@@ -72,7 +73,22 @@ public class Storepass extends JPanel implements ActionListener {
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
         newPage.add(enterPassword, gbc);  
 
+        strength(newPage, gbc); 
         contentContinued(gbc, newPage); 
+    }
+
+    public void strength(JPanel newPage, GridBagConstraints gbc) {  
+        strength = new JLabel("Strength: "); 
+        strength.setFont(new Font("Arial", Font.BOLD, 16)); 
+        strength.setForeground(Color.gray); 
+
+        // strength psoition 
+        gbc.gridx = 1; 
+        gbc.gridy = 3; 
+        gbc.anchor = GridBagConstraints.LINE_START; 
+        newPage.add(strength, gbc);  
+
+        enterPassword.getDocument().addDocumentListener(new StrengthListener(strength, enterPassword)); 
     }
 
     public void contentContinued(GridBagConstraints gbc, JPanel newPage) {  
