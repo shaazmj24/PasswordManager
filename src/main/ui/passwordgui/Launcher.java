@@ -5,19 +5,28 @@ import javax.swing.*;
 
 import model.Password;
 import model.PasswordManager;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowAdapter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Launcher { 
     private static JPanel mainPanel;  
     private static PasswordManager pm = new PasswordManager(); 
-
+    private static final String JSON_STORE = "./data/passwordstore.json";
+    private static JsonWriter jw; 
+    private static JFrame frame; 
 
     public static void main(String[] args) {  
         // creates Frame 
-        JFrame frame = new JFrame();  
+        frame = new JFrame();  
         frame.setTitle("Password Manager"); 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit out of application  
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // exit out of application  
         frame.setSize(400, 400);  
         
         // JPanel = Gui component that functions as a container to hold other component
@@ -34,11 +43,43 @@ public class Launcher {
 
         // add mainpanel to frame 
         frame.add(mainPanel);
+        // pop up load option
+        int loadChoice = JOptionPane.showConfirmDialog(null, "Would you like to load saved passwords?", 
+        "Load Passwords", JOptionPane.YES_NO_OPTION); 
+
+        if (loadChoice == JOptionPane.YES_OPTION) { 
+            load(); 
+        }
         frame.setVisible(true);
+        saveOption(); 
+    }
+
+    public static void saveOption() {   
+        frame.addWindowListener(new WindowAdapter() { 
+            @Override 
+            public void windowClosing(WindowEvent e) { 
+                int saveChoice = JOptionPane.showConfirmDialog(null,  
+                "Would you like to save your passwords before exiting?", "Save Passwords", 
+                JOptionPane.YES_NO_OPTION); 
+
+            if (saveChoice == JOptionPane.YES_OPTION) { 
+                save(); 
+            }
+            System.exit(0); 
+            }
+        });
     }
  
     // EFFECT: add buttons to panel
-    public static void addButtons(JPanel mainPanel, JPanel panel, int space) { 
+    public static void addButtons(JPanel mainPanel, JPanel panel, int space) {    
+        // create emoji label 
+        JLabel emoji = new JLabel("🔑");  
+        emoji.setFont(new Font("Apple Color Emoji", Font.PLAIN, 26));
+        emoji.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panel.add(Box.createVerticalStrut(20)); 
+        panel.add(emoji); 
+        panel.add(Box.createVerticalStrut(30)); 
+
         Storepass button1 = new Storepass(mainPanel, pm); 
         Searchpass button3 = new Searchpass(mainPanel, pm);
         Deletepass button4 = new Deletepass(mainPanel, pm);
@@ -61,6 +102,28 @@ public class Launcher {
         button.setAlignmentX(Component.CENTER_ALIGNMENT); // centers the button in box layout 
         return button; 
     } 
+
+    // MODIFIES: this
+    // EFFECT: saves the data to file 
+    private static void save() {     
+        try {   
+            jw = new JsonWriter(new File(JSON_STORE)); 
+            jw.write(pm);
+            jw.close(); 
+        } catch (FileNotFoundException e) { 
+            System.out.println("not found");
+        } 
+    } 
+
+    // EFFECT: loads data from file
+    private static void load() {  
+        try { 
+            PasswordManager load = JsonReader.readPasswords(new File(JSON_STORE));  
+            pm.setMap(load.passwords);
+        } catch (IOException e) { 
+            System.out.println("Unable to read from file:" + JSON_STORE);
+        }
+    }  
 
  
 }
