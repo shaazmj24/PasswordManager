@@ -30,6 +30,7 @@ public class Storepass extends JPanel implements ActionListener {
         this.pm = pm; 
     }   
 
+    //EFFECT: action buttons
     @Override 
     public void actionPerformed(ActionEvent e) {  
         if (e.getSource() == button1) {  
@@ -43,6 +44,7 @@ public class Storepass extends JPanel implements ActionListener {
         }
     }
 
+    //EFFECT: create a new panel when store button is clicked
     public void openNewPage() { 
         JPanel newPage = new JPanel();  
         newPage.setLayout(new GridBagLayout()); 
@@ -54,6 +56,7 @@ public class Storepass extends JPanel implements ActionListener {
         cardLayout.show(mainPanel, "StorePassword");
     }
 
+    //EFFECT: create store content
     public void content(JPanel newPage) {  
         GridBagConstraints gbc = new GridBagConstraints(); 
         // Label1: Enter Password
@@ -115,11 +118,13 @@ public class Storepass extends JPanel implements ActionListener {
         newPage.add(submit, gbc);
     }
 
+    //EFFECT: action when deletPass button is clicked
     public void storePassword(String pass, String acc) {  
         Password p = new Password(pass, acc);  
         pm.addPasswordAccount(p, acc); 
     } 
 
+    //EFFECT: returns to main menu panel when back is clicked
     public void returnMain() {  
         CardLayout c = (CardLayout) mainPanel.getLayout(); 
         c.show(mainPanel, "MainMenu"); 
