@@ -1,9 +1,9 @@
 package ui.passwordgui;
-import java.awt.event.ActionListener;
 
 import model.Password;
 import model.PasswordManager;
 
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 import java.awt.*;
