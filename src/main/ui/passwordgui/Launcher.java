@@ -54,6 +54,7 @@ public class Launcher {
         saveOption(); 
     }
 
+    //EFFECT: save passwords
     public static void saveOption() {   
         frame.addWindowListener(new WindowAdapter() { 
             @Override 
@@ -70,7 +71,7 @@ public class Launcher {
                 }); 
     }
  
-    // EFFECT: add buttons to panel
+    // EFFECT: add buttons to main panel
     public static void addButtons(JPanel mainPanel, JPanel panel, int space) {    
 
         Storepass button1 = new Storepass(mainPanel, pm); 
