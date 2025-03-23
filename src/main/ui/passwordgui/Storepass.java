@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import ui.passwordgui.Storepass; 
 
@@ -73,6 +72,10 @@ public class Storepass extends JPanel implements ActionListener {
         gbc.anchor = GridBagConstraints.LAST_LINE_START; 
         newPage.add(enterPassword, gbc);  
 
+        contentContinued(gbc, newPage); 
+    }
+
+    public void contentContinued(GridBagConstraints gbc, JPanel newPage) {  
         // Label2: Enter Account  
         JLabel label2 = new JLabel("Enter Account:"); 
         label2.setFont(new Font("Arial", Font.BOLD, 23));
@@ -93,7 +96,7 @@ public class Storepass extends JPanel implements ActionListener {
         gbc.gridx = 1; 
         gbc.gridy = 2; 
         gbc.anchor = GridBagConstraints.CENTER; 
-        newPage.add(submit, gbc); 
+        newPage.add(submit, gbc);
     }
 
     public void storePassword(String pass, String acc) {  
