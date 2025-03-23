@@ -24,6 +24,7 @@ public class Searchpass extends JPanel implements ActionListener {
     private PasswordManager pm;  
     JButton back; 
 
+    //EFFECT: create search panel, content and its features
     public Searchpass(JPanel mainPanel, PasswordManager pm) {  
         button3 = new JButton("Search Password"); 
         button3.addActionListener(this); 
@@ -35,6 +36,7 @@ public class Searchpass extends JPanel implements ActionListener {
         back.addActionListener(this); 
     } 
 
+    //EFFECT: action when buttons are clicked
     @Override 
     public void actionPerformed(ActionEvent e) {  
         if (e.getSource() == button3) {  
@@ -48,6 +50,7 @@ public class Searchpass extends JPanel implements ActionListener {
         }
     }
 
+    //EFFECT: create a new panel when search pass button is clicked
     public void openNewPage() {  
         JPanel newPage = new JPanel();  
         newPage.setLayout(new GridBagLayout()); 
@@ -60,6 +63,7 @@ public class Searchpass extends JPanel implements ActionListener {
     }
 
 
+    //EFFECT: create search content
     public void content(JPanel newPage) {   
         GridBagConstraints gbc = new GridBagConstraints(); 
         // Label1: Enter Account
@@ -86,12 +90,15 @@ public class Searchpass extends JPanel implements ActionListener {
         newPage.add(search, gbc); 
     }
 
+
+    //EFFECT: action when deletPass button is clicked
     public void search() {  
         account = enterAccount.getText().trim(); 
         Password ps = pm.searchPassword(account); 
         messagePass(ps, account); 
     }
 
+    //EFFECT: throw message when search is clicked
     public void messagePass(Password ps, String acc) {    
         JPanel panelM = new JPanel(); 
         panelM.setLayout(new GridBagLayout());
@@ -121,6 +128,7 @@ public class Searchpass extends JPanel implements ActionListener {
         cardLayout1.show(mainPanel, "message");
     }
 
+    //EFFECT: returns to main menu panel when back is clicked
     public void back() {  
         CardLayout c = (CardLayout) mainPanel.getLayout(); 
         c.show(mainPanel, "MainMenu"); 
