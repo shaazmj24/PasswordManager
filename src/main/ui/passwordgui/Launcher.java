@@ -73,8 +73,8 @@ public class Launcher {
     // EFFECT: add buttons to panel
     public static void addButtons(JPanel mainPanel, JPanel panel, int space) {    
         // create emoji label 
-        JLabel emoji = new JLabel("🔑");  
-        emoji.setFont(new Font("Apple Color Emoji", Font.PLAIN, 26));
+        JLabel emoji = new JLabel("\uD83D\uDE0A"); // Unicode for 😊 
+        emoji.setFont(new Font("Apple Color Emoji", Font.PLAIN, 26)); 
         emoji.setAlignmentX(Component.CENTER_ALIGNMENT);
         panel.add(Box.createVerticalStrut(20)); 
         panel.add(emoji); 
