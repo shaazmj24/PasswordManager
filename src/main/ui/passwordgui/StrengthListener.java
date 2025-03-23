@@ -15,6 +15,7 @@ public class StrengthListener implements javax.swing.event.DocumentListener {
     private JLabel strength;
     private JTextField enterPassword; 
 
+    //EFFECT: constructs a strengtlistener with given strength and enterPassword
     public StrengthListener(JLabel strength, JTextField enterPassword) {  
         this.enterPassword = enterPassword; 
         this.strength = strength; 
@@ -35,6 +36,7 @@ public class StrengthListener implements javax.swing.event.DocumentListener {
         updateStrengthColor(); 
     }
 
+    //EFFECT: show color as you type. red being the strongest whereas green being the weakest
     private void updateStrengthColor() {
         String text = enterPassword.getText();
         if (text.length() > 12) {
