@@ -12,7 +12,7 @@ import java.util.ArrayList;
 // Manages a collection of passwords associated with 
 // different accounts 
 public class PasswordManager implements Saveable {  
-    private HashMap<String, Password> passwords;
+    public HashMap<String, Password> passwords;
  
     // EFFECT: Constructs a PasswordManager and initializes an empty 
     // hashmap to store passwords
@@ -78,6 +78,11 @@ public class PasswordManager implements Saveable {
         }
         json.put("Passwords", jarray);
         return json;
+    }
+
+    //EFFECT: set hashmap to passwords
+    public void setMap(HashMap<String, Password> loaded) {   
+        this.passwords = loaded; 
     }
 
 }
