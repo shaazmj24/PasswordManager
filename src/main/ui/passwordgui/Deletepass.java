@@ -20,6 +20,7 @@ public class Deletepass extends JPanel implements ActionListener {
     private JButton back; 
     private PasswordManager pm;
 
+    //EFFECT: construct a delete panel, content and its buttons
     public Deletepass(JPanel mainPanel, PasswordManager pm) {  
         button4 = new JButton("Delete Password"); 
         button4.addActionListener(this); 
@@ -31,6 +32,7 @@ public class Deletepass extends JPanel implements ActionListener {
         back.addActionListener(this); 
     }  
 
+    //EFFECT: action buttons
     @Override 
     public void actionPerformed(ActionEvent e) {  
         if (e.getSource() == button4) {  
@@ -45,6 +47,7 @@ public class Deletepass extends JPanel implements ActionListener {
         }
     }
 
+    //EFFECT: create a new panel when delete button is clicked
     public void openNewPage() {  
         JPanel newPage = new JPanel();  
         newPage.setLayout(new GridBagLayout()); 
@@ -56,6 +59,7 @@ public class Deletepass extends JPanel implements ActionListener {
         cardLayout.show(mainPanel, "delete");
     }
 
+    //EFFECT: create delete content
     public void content(JPanel newPage) {  
         GridBagConstraints gbc = new GridBagConstraints(); 
         // Label1: Enter Account
@@ -82,6 +86,7 @@ public class Deletepass extends JPanel implements ActionListener {
         newPage.add(delete, gbc); 
     }
 
+    //EFFECT: action when deletPass button is clicked
     public void deletePassword(String acc) {       
         String message = pm.deletePassword(acc); 
         JLabel deleteLabel = new JLabel(message); 
@@ -106,6 +111,7 @@ public class Deletepass extends JPanel implements ActionListener {
         c.show(mainPanel, "d"); 
     }
 
+    //EFFECT: returns to main menu panel when back is clicked
     public void returnMain() {  
         CardLayout c = (CardLayout) mainPanel.getLayout(); 
         c.show(mainPanel, "MainMenu"); 
