@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 public class TestPasswordManager {
     private PasswordManager passwords;
     private Password pass;
@@ -136,6 +137,16 @@ public class TestPasswordManager {
         assertEquals("1234", passwords.searchPassword("ubc").getPassword());
         assertEquals("shaaz123", passwords.searchPassword("facebook").getPassword());
         assertEquals(2, passwords.listPasswords().size());
+    }
+
+    @Test 
+    void testGetMap() {  
+        passwords.addPasswordAccount(pass, "facebook");
+        passwords.addPasswordAccount(pass1, "ubc");
+        HashMap<String, Password> copyMap = passwords.getHashMap();  
+        assertEquals(2, copyMap.size());
+        assertEquals(pass1, copyMap.get("ubc"));
+        assertEquals(pass, copyMap.get("facebook"));
     }
 
 
