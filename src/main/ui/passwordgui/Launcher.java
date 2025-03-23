@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+// PasswordManager GUI 
 public class Launcher { 
     private static JPanel mainPanel;  
     private static PasswordManager pm = new PasswordManager(); 
