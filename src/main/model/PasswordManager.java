@@ -24,6 +24,8 @@ public class PasswordManager implements Saveable {
     // EFFECT: Adds a new password and account 
     public void addPasswordAccount(Password password, String account) {   
         passwords.put(account, password);
+        // Add event 
+        EventLog.getInstance().logEvent(new Event("Password added for: " + account));
     }
 
     // EFFECT: Returns the password object by the account name
@@ -31,7 +33,9 @@ public class PasswordManager implements Saveable {
     // in main class
     public Password searchPassword(String account) { 
         if (passwords.containsKey(account)) { 
-            return passwords.get(account);
+            // Add event  
+            EventLog.getInstance().logEvent(new Event("Password searched for: " + account));
+            return passwords.get(account);  
         } else { 
             return null;
         }
@@ -43,6 +47,8 @@ public class PasswordManager implements Saveable {
     public String deletePassword(String account) {  
         if (passwords.containsKey(account)) { 
             passwords.remove(account);
+            // Add event  
+            EventLog.getInstance().logEvent(new Event("Password deleted for: " + account));
             return "Password deleted successfully";
         } else { 
             return "account not found";
