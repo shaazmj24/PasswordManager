@@ -29,3 +29,24 @@ This project is interesting because it solves a real-world problem, involves sec
 - As a user, I want to have the option to **save** my stored passwords to a file so that I can access it later.
 - As a user, I want to have the option to **load** my saved password data from a file
 
+### Phase 4: Task 2
+=====EVENT=====:
+Passwords loaded
+Fri Mar 28 14:10:45 PDT 2025
+Password added for: facebook
+Fri Mar 28 14:10:45 PDT 2025
+Password added for: netflix
+Fri Mar 28 14:10:45 PDT 2025
+Fri Mar 28 14:10:53 PDT 2025
+Password searched for: facebook
+Fri Mar 28 14:11:03 PDT 2025
+Password searched for: netflix
+Fri Mar 28 14:11:33 PDT 2025
+Password added for: instagram
+Fri Mar 28 14:11:43 PDT 2025
+Password deleted for: facebook
+Fri Mar 28 14:11:48 PDT 2025
+Passwords saved
+
+
+
