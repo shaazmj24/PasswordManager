@@ -37,6 +37,7 @@ public class PasswordManager implements Saveable {
             EventLog.getInstance().logEvent(new Event("Password searched for: " + account));
             return passwords.get(account);  
         } else { 
+            EventLog.getInstance().logEvent(new Event("Password searched for: " + account));
             return null;
         }
     }
@@ -51,6 +52,7 @@ public class PasswordManager implements Saveable {
             EventLog.getInstance().logEvent(new Event("Password deleted for: " + account));
             return "Password deleted successfully";
         } else { 
+            EventLog.getInstance().logEvent(new Event("Password deleted for: " + account));
             return "account not found";
         }
     }
