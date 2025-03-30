@@ -3,6 +3,8 @@ package ui.passwordgui;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import model.Event;
+import model.EventLog;
 import model.Password;
 import model.PasswordManager;
 import persistence.JsonReader;
@@ -43,7 +45,10 @@ public class Launcher {
         mainPanel.add(mainMenuPanel, "MainMenu"); 
 
         // add mainpanel to frame 
-        frame.add(mainPanel);
+        frame.add(mainPanel); 
+
+
+
         // pop up load option
         int loadChoice = JOptionPane.showConfirmDialog(null, "Would you like to load saved passwords?", 
                    "Load Passwords", JOptionPane.YES_NO_OPTION); 
@@ -59,14 +64,21 @@ public class Launcher {
     public static void saveOption() {   
         frame.addWindowListener(new WindowAdapter() { 
             @Override 
-            public void windowClosing(WindowEvent e) { 
+            public void windowClosing(WindowEvent e) {  
                 int saveChoice = JOptionPane.showConfirmDialog(null,   
                          "Would you like to save your passwords before exiting?", "Save Passwords", 
                          JOptionPane.YES_NO_OPTION); 
 
                         if (saveChoice == JOptionPane.YES_OPTION) {  
                             save();  
-                        } 
+                        }  
+
+                        // print all log events  
+                        System.out.println("=====EVENT=====:");
+                        for (Event event : EventLog.getInstance()) {   
+                            System.out.println(event.toString()); 
+                        }
+
                         System.exit(0);  
                     } 
                 }); 
@@ -105,6 +117,8 @@ public class Launcher {
             jw = new JsonWriter(new File(JSON_STORE)); 
             jw.write(pm);
             jw.close(); 
+            // Add event   
+            EventLog.getInstance().logEvent(new Event("Passwords saved"));
         } catch (FileNotFoundException e) { 
             System.out.println("not found");
         } 
@@ -115,10 +129,13 @@ public class Launcher {
         try { 
             PasswordManager load = JsonReader.readPasswords(new File(JSON_STORE));  
             pm.setMap(load.getHashMap());
+            // Add event   
+            EventLog.getInstance().logEvent(new Event("Passwords loaded"));
         } catch (IOException e) { 
             System.out.println("Unable to read from file:" + JSON_STORE);
         }
     }  
+
 
  
 }
