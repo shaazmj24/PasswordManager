@@ -22,7 +22,7 @@ public class Searchpass extends JPanel implements ActionListener {
     private JTextField enterAccount; 
     private JLabel message; 
     private PasswordManager pm;  
-    JButton back; 
+    private JButton back; 
 
     //EFFECT: create search panel, content and its features
     public Searchpass(JPanel mainPanel, PasswordManager pm) {  
