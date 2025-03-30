@@ -29,6 +29,18 @@ This project is interesting because it solves a real-world problem, involves sec
 - As a user, I want to have the option to **save** my stored passwords to a file so that I can access it later.
 - As a user, I want to have the option to **load** my saved password data from a file
 
+### UML Reflection: 
+- PasswordManager and "Password" both implement the Savage interface. 
+- PasswordManager is associated with Password, as it uses a collection of Passwords, hence, a dot-dot-star (0..*) relationship.
+- Launcher is associated with PasswordManager, JFrame, JsonWriter, and JPanel.
+- StorePass is associated with PasswordManager, JTextField, JLabel, and JButton. It also implements ActionListener and extends JPanel.
+- DeletePass is associated with PasswordManager, JTextField, and JButton. It implements ActionListener and extends JPanel.
+- SearchPass is associated with PasswordManager, JTextField, JLabel, and JButton. It also implements ActionListener and extends JPanel.
+- EventLog implements Iterator<Event> and is associated with Event.
+- Lastly, "StrengthListener" implements java.swing.event.
+- If I had more time, I would have refactored the repeated line "CardLayout c = (CardLayout) mainPanel.getLayout();  
+c.show(mainPanel, "MainMenu");" which appears in every button-handling class. I also would have abstracted out openNewPage(), which appears in every button-handling class as well."
+
 ### Phase 4: Task 2
 =====EVENT=====:
 Passwords loaded
