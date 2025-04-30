@@ -16,6 +16,10 @@ A *Java-based desktop application* for securely storing and managing passwords. 
 - JSON for persistent storage
 - Java IO / File handling
 
+# Demo 
+https://youtu.be/mh-SWePr74s?si=hUm82Ess5LuYy1oG 
+
+
 
 
 
