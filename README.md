@@ -29,36 +29,8 @@ This project is interesting because it solves a real-world problem, involves sec
 - As a user, I want to have the option to **save** my stored passwords to a file so that I can access it later.
 - As a user, I want to have the option to **load** my saved password data from a file
 
-### UML Reflection: 
-- PasswordManager and "Password" both implement the Savage interface. 
-- PasswordManager is associated with Password, as it uses a collection of Passwords, hence, a dot-dot-star (0..*) relationship.
-- Launcher is associated with PasswordManager, JFrame, JsonWriter, and JPanel.
-- StorePass is associated with PasswordManager, JTextField, JLabel, and JButton. It also implements ActionListener and extends JPanel.
-- DeletePass is associated with PasswordManager, JTextField, and JButton. It implements ActionListener and extends JPanel.
-- SearchPass is associated with PasswordManager, JTextField, JLabel, and JButton. It also implements ActionListener and extends JPanel.
-- EventLog implements Iterator<Event> and is associated with Event.
-- Lastly, "StrengthListener" implements java.swing.event.
-- If I had more time, I would have refactored the repeated line "CardLayout c = (CardLayout) mainPanel.getLayout();  
-c.show(mainPanel, "MainMenu");" which appears in every button-handling class. I also would have abstracted out openNewPage(), which appears in every button-handling class as well."
 
-### Phase 4: Task 2
-=====EVENT=====:
-Passwords loaded
-Fri Mar 28 14:10:45 PDT 2025
-Password added for: facebook
-Fri Mar 28 14:10:45 PDT 2025
-Password added for: netflix
-Fri Mar 28 14:10:45 PDT 2025
-Fri Mar 28 14:10:53 PDT 2025
-Password searched for: facebook
-Fri Mar 28 14:11:03 PDT 2025
-Password searched for: netflix
-Fri Mar 28 14:11:33 PDT 2025
-Password added for: instagram
-Fri Mar 28 14:11:43 PDT 2025
-Password deleted for: facebook
-Fri Mar 28 14:11:48 PDT 2025
-Passwords saved
+
 
 
 
